@@ -1,5 +1,5 @@
 <template>
-  <div class="bug"></div>
+  <div class="bug">{{bugData}}</div>
 </template>
 
 <script>
