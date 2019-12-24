@@ -1,10 +1,15 @@
 <template>
-  <div class="bugs"></div>
+  <div class="bug"></div>
 </template>
 
 <script>
 export default {
-  name: "Bugs"
+  name: "Bug",
+  props: ["bugData"],
+  mounted() {},
+  data() {
+    return;
+  }
 };
 </script>
 
