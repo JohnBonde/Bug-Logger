@@ -1,5 +1,14 @@
 <template>
-  <div class="bug">{{bugData}}</div>
+  <div class="bug">
+    <router-link :to="{name: 'notes', params: {id: bugData.id}}">
+      <tr>
+        <td>{{bugData.title}}</td>
+        <td>{{bugData.reportedBy}}</td>
+        <td v-if="!bugData.closed">Open</td>
+        <td v-else>Closed</td>
+      </tr>
+    </router-link>
+  </div>
 </template>
 
 <script>
@@ -15,18 +24,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>
