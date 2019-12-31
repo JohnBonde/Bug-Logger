@@ -4,7 +4,7 @@
       <td>{{notesData.reportedBy}}</td>
       <td>{{notesData.content}}</td>
       <td>
-        <i class="far fa-trash"></i>
+        <i @click="deleteNote" class="fas fa-trash"></i>
       </td>
     </tr>
   </div>
@@ -13,7 +13,12 @@
 <script>
 export default {
   name: "Note",
-  props: ["notesData"]
+  props: ["notesData"],
+  methods: {
+    deleteNote() {
+      this.$store.dispatch("deleteNote", this.notesData.id);
+    }
+  }
 };
 </script>
 

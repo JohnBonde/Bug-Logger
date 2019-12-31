@@ -28,6 +28,7 @@
         <div class="row">
           <div class="col-11" id="close-button">
             <button type="button" @click="deleteBug" class="btn btn-danger">Close</button>
+            <modal-edit />
           </div>
         </div>
       </div>
@@ -66,16 +67,19 @@
 <script>
 import Note from "@/components/Note";
 import ModalNote from "@/components/ModalNote";
+import ModalEdit from "@/components/ModalEdit";
 
 export default {
   name: "notes",
   components: {
     Note,
-    ModalNote
+    ModalNote,
+    ModalEdit
   },
   mounted() {
     this.$store.dispatch("getBugById", this.$route.params.id);
-    this.$store.dispatch("getNotes");
+    this.$store.dispatch("getNotesByBugId", this.$route.params.id);
+    console.log(this.$store.state.notes);
   },
   computed: {
     bug() {
@@ -88,6 +92,9 @@ export default {
   methods: {
     deleteBug() {
       this.$store.dispatch("deleteBug", this.$route.params.id);
+    },
+    editBug() {
+      this.$store.dispatch("editBug", this.$route.params.id);
     }
   }
 };

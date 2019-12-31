@@ -55,7 +55,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 modal {
   height: 400px;
 }

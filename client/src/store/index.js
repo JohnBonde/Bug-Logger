@@ -25,12 +25,11 @@ export default new Vuex.Store({
     setActiveBug(state, bug) {
       state.activeBug = bug;
     },
-    setAllNotes(state, data) {
+    setNotes(state, data) {
       state.notes = data;
     },
     addNote(state, note) {
       state.notes.push(note);
-      console.log(state.notes);
     }
   },
   actions: {
@@ -46,17 +45,26 @@ export default new Vuex.Store({
       let res = await _api.get("bugs/" + id);
       commit("setActiveBug", res.data);
     },
-    async deleteBug({commit, dispatch}, id) {
-    await _api.delete("bugs/" + id)
-    dispatch("getBugs")
+    async editBug({ commit, dispatch }, id, update) {
+      debugger;
+      let res = await _api.put("bugs/" + id, update);
+      commit("setActiveBug", res.data);
     },
-    async getNotes({ commit, dispatch }) {
-      let res = await _api.get("notes");
-      commit("setAllNotes", res.data);
+    async deleteBug({ commit, dispatch }, id) {
+      await _api.delete("bugs/" + id);
+      dispatch("getBugs");
+    },
+    async getNotesByBugId({ commit, dispatch }, id) {
+      let res = await _api.get("bugs/" + id + "/notes");
+      commit("setNotes", res.data);
     },
     async createNote({ commit, dispatch }, note) {
       let res = await _api.post("notes", note);
       commit("addNote", res.data);
+    },
+    async deleteNote({ commit, dispatch }, id) {
+      await _api.delete("notes/" + id);
+      dispatch("getNotesByBugId");
     }
   },
   modules: {}
