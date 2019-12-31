@@ -14,11 +14,7 @@
 <script>
 export default {
   name: "Bug",
-  props: ["bugData"],
-  mounted() {},
-  data() {
-    return;
-  }
+  props: ["bugData"]
 };
 </script>
 
