@@ -19,14 +19,15 @@ class BugService {
     return await _repository.create(rawData);
   }
   async edit(id, update) {
-    if (this.getById(id).closed == false) {
-      let data = await _repository.findOneAndUpdate({ _id: id }, update);
-      if (!data) {
-        throw new ApiError("Invalid Update ID", 400);
+    let data = await _repository.findOneAndUpdate(
+      { _id: id, closed: false },
+      update,
+      {
+        new: true
       }
-      return data;
-    } else {
-      this.getById(id);
+    );
+    if (!data) {
+      throw new ApiError("Invalid Update ID", 400);
     }
   }
   async delete(id) {

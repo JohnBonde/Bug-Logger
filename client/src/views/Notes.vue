@@ -40,8 +40,8 @@
         </div>
         <div class="row">
           <div class="col-10" id="notes-table">
-            <table class="table table-striped">
-              <thead class="thead-light">
+            <table class="table table-striped table-bordered">
+              <thead class="thead-dark">
                 <tr>
                   <th scope="col">Name</th>
                   <th scope="col">Message</th>
@@ -79,7 +79,6 @@ export default {
   mounted() {
     this.$store.dispatch("getBugById", this.$route.params.id);
     this.$store.dispatch("getNotesByBugId", this.$route.params.id);
-    console.log(this.$store.state.notes);
   },
   computed: {
     bug() {
@@ -91,10 +90,20 @@ export default {
   },
   methods: {
     deleteBug() {
-      this.$store.dispatch("deleteBug", this.$route.params.id);
-    },
-    editBug() {
-      this.$store.dispatch("editBug", this.$route.params.id);
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(result => {
+        if (result.value) {
+          this.$store.dispatch("deleteBug", this.$route.params.id);
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        }
+      });
     }
   }
 };

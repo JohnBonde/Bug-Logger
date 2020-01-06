@@ -1,23 +1,34 @@
 <template>
-  <div class="bug">
+  <tr class="bug">
     <router-link :to="{name: 'notes', params: {id: bugData.id}}">
-      <tr>
-        <td>{{bugData.title}}</td>
-        <td>{{bugData.reportedBy}}</td>
-        <td v-if="!bugData.closed">Open</td>
-        <td v-else>Closed</td>
-      </tr>
+      <td>{{bugData.title}}</td>
     </router-link>
-  </div>
+    <td>{{bugData.reportedBy}}</td>
+    <td v-if="!bugData.closed" id="open">Open</td>
+    <td v-else id="closed">Closed</td>
+    <td>{{bugData.updatedAt}}</td>
+  </tr>
 </template>
 
 <script>
 export default {
   name: "Bug",
-  props: ["bugData"]
+  props: ["bugData"],
+  computed: {
+    date() {
+      let date = this.$store.state.bugs;
+      console.log(date);
+    }
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#open {
+  color: green;
+}
+#closed {
+  color: red;
+}
 </style>

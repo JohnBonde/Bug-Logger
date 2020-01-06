@@ -28,7 +28,8 @@ export default {
   data() {
     return {
       changeBug: {
-        description: ""
+        description: "",
+        _id: this.$route.params.id
       }
     };
   },
@@ -43,9 +44,8 @@ export default {
       this.$modal.hide("modal-edit");
     },
     editBug() {
-      let update = { ...this.changeBug };
-      debugger;
-      this.$store.dispatch("editBug", this.$route.params.id, update);
+      let change = { ...this.changeBug };
+      this.$store.dispatch("editBug", change);
       this.changeBug = {
         description: ""
       };

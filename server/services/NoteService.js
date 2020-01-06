@@ -5,8 +5,8 @@ import ApiError from "../utils/ApiError";
 const _repository = mongoose.model("Note", Note);
 
 class NoteService {
-  async getNoteByBugId(bugId) {
-    return await _repository.find({ bugId });
+  async getNoteByBugId(id) {
+    return await _repository.find({ bug: id });
   }
   async getAll() {
     return await _repository.find({});

@@ -9,9 +9,9 @@
       <div class="col-12" id="title-1">
         <h3>Current Bugs</h3>
         <div class="row">
-          <div class="col-12">
+          <div class="col">
             <table class="table table-striped">
-              <thead class="thead-light">
+              <thead class="thead-dark">
                 <tr>
                   <th scope="col">Title</th>
                   <th scope="col">Reported By</th>
