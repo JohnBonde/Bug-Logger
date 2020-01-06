@@ -1,18 +1,18 @@
 <template>
   <div>
     <button type="button" @click.prevent="show" class="btn btn-success">Add</button>
-    <div class="row">
+    <div class="row modal-view">
       <modal name="modal-note" @opened="opened">
         <form @submit.prevent="createNote">
-          <div class="form-group col-12">
+          <div class="form-group col-12 name">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" v-model="newNote.reportedBy" ref="name" />
           </div>
-          <div class="form-group col-12">
+          <div class="form-group col-12 message">
             <label for="message">Message</label>
             <textarea class="form-control" rows="3" id="message" v-model="newNote.content"></textarea>
           </div>
-          <div class="col-12">
+          <div class="col-12" id="button">
             <button class="btn btn-primary" type="submit">Submit</button>
           </div>
         </form>
@@ -56,7 +56,20 @@ export default {
 </script>
 
 <style scoped>
-modal {
-  height: 400px;
+.modal-view {
+  margin: auto;
+}
+.name {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.message {
+  display: flex;
+  flex-direction: column;
+}
+#button {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

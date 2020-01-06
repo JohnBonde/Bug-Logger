@@ -6,7 +6,7 @@
     <td>{{bugData.reportedBy}}</td>
     <td v-if="!bugData.closed" id="open">Open</td>
     <td v-else id="closed">Closed</td>
-    <td>{{bugData.updatedAt}}</td>
+    <td>{{this.newDate[0]}}</td>
   </tr>
 </template>
 
@@ -14,11 +14,10 @@
 export default {
   name: "Bug",
   props: ["bugData"],
-  computed: {
-    date() {
-      let date = this.$store.state.bugs;
-      console.log(date);
-    }
+  data() {
+    return {
+      newDate: this.bugData.updatedAt.split("T")
+    };
   }
 };
 </script>

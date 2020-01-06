@@ -1,10 +1,10 @@
 <template>
   <div v-if="!bug.closed">
     <button type="button" @click.prevent="show" class="btn btn-primary">Edit</button>
-    <div class="row">
+    <div class="row modal-view">
       <modal name="modal-edit" @opened="opened">
         <form @submit.prevent="editBug">
-          <div class="form-group col-12">
+          <div class="form-group col-12 edit">
             <label for="description">Edit Description</label>
             <textarea
               class="form-control"
@@ -14,7 +14,7 @@
               ref="description"
             ></textarea>
           </div>
-          <div class="col-12">
+          <div class="col-12 button">
             <button class="btn btn-primary" type="submit">Submit</button>
           </div>
         </form>
@@ -62,6 +62,18 @@ export default {
 
 <style scoped>
 modal {
-  height: 300px;
+  height: auto;
+}
+.modal-view {
+  display: flex;
+}
+.edit {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3em;
+}
+.button {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

@@ -33,5 +33,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+i:hover {
+  cursor: pointer;
+}
 </style>

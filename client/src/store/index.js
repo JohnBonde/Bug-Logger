@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import router from "../router";
 
 Vue.use(Vuex);
 
@@ -40,6 +41,7 @@ export default new Vuex.Store({
     async createBug({ commit, dispatch }, bug) {
       let res = await _api.post("bugs", bug);
       commit("addBug", res.data);
+      router.push({ path: "/notes/" + res.data.id });
     },
     async getBugById({ commit, dispatch }, id) {
       let res = await _api.get("bugs/" + id);
