@@ -4,8 +4,6 @@ import cors from "cors";
 import bp from "body-parser";
 import DbContext from "./db/dbConfig";
 
-const port = process.env.PORT || 3000;
-
 //NOTE next we need to create our server
 let server = express();
 
@@ -13,6 +11,7 @@ let server = express();
 DbContext.connect();
 
 //NOTE Creates a reference to the build project on the client (if api only remove this line)
+const port = process.env.PORT || 3000;
 server.use(express.static(__dirname + "/../client/dist"));
 
 //NOTE Allows requests from the port 8080, add additional addresses as needed
