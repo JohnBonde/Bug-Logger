@@ -5,8 +5,12 @@ import router from "../router";
 
 Vue.use(Vuex);
 
+let base = window.location.host.includes("localhost:8080")
+  ? "//localhost:3000/"
+  : "/";
+
 let _api = axios.create({
-  baseURL: "//localhost:3000/api",
+  baseURL: base + "api/",
   timeout: 5000
 });
 
