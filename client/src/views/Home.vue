@@ -8,7 +8,6 @@
     <main class="row">
       <div class="col-12" id="title-1">
         <h3>Current Bugs</h3>
-        <h4>This site is having trouble accessing the database and will be working soon.</h4>
         <div class="row">
           <div class="col">
             <table class="table table-striped">
