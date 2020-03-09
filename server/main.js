@@ -16,7 +16,10 @@ DbContext.connect();
 server.use(express.static(__dirname + "/../client/dist"));
 
 //NOTE Allows requests from the port 8080, add additional addresses as needed
-var whitelist = ["http://localhost:8080"];
+var whitelist = [
+  "http://localhost:8080",
+  "https://bug-logger-jack.herokuapp.com/"
+];
 var corsOptions = {
   origin: function(origin, callback) {
     var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
